@@ -1,0 +1,27 @@
+name: Offline China Ads tests
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.13']
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/release_gate.py
+      - name: CLI smoke tests
+        run: |
+          python scripts/toolkit.py plan examples/brief.synthetic.json --out-dir output/ci-plan
+          python scripts/toolkit.py validate output/ci-plan/plan.json
+          python scripts/toolkit.py analyze examples/report.csv --meta examples/report.meta.json --out-dir output/ci-analysis
+          python scripts/toolkit.py validate output/ci-analysis/analysis.json
