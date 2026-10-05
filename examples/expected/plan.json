@@ -1,0 +1,191 @@
+{
+  "contract_name": "jdads.plan",
+  "contract_version": "1.0",
+  "producer_version": "1.0.0",
+  "kind": "plan",
+  "local_id": "local-c8fe86a6f7951a87",
+  "status": "PLAN_READY",
+  "review": "HUMAN_REVIEW_REQUIRED",
+  "publish_authorized": false,
+  "external_reads": false,
+  "external_writes": false,
+  "generation_mode": "deterministic",
+  "input": {
+    "platform": "jd",
+    "market": "CN",
+    "currency": "CNY",
+    "source": {
+      "kind": "synthetic",
+      "note": "All products, money, permissions and results are fictional test data."
+    },
+    "money_decimals": 2,
+    "campaign": {
+      "mode": "product",
+      "days": 14,
+      "budget": "1400",
+      "account_ready": true,
+      "feature_confirmed": true,
+      "target_return": null,
+      "ad_rate": null
+    },
+    "products": [
+      {
+        "sku": "demo-cup",
+        "title": "Synthetic ceramic cup / 合成示範商品",
+        "stock": 30,
+        "listing_ready": true,
+        "advertising_eligible": true,
+        "buy_box": null,
+        "order_revenue": "100",
+        "order_costs": {
+          "cogs": "35",
+          "platform_fees": "8",
+          "fulfilment": "10",
+          "other": "2"
+        },
+        "target_profit": "10",
+        "expected_cvr": "0.05",
+        "fee_base_per_order": null,
+        "terms": [
+          "ceramic cup",
+          "陶瓷杯"
+        ]
+      },
+      {
+        "sku": "demo-hold",
+        "title": "Synthetic ceramic cup / 合成示範商品",
+        "stock": 0,
+        "listing_ready": true,
+        "advertising_eligible": true,
+        "buy_box": null,
+        "order_revenue": "100",
+        "order_costs": {
+          "cogs": "35",
+          "platform_fees": "8",
+          "fulfilment": "10",
+          "other": "2"
+        },
+        "target_profit": "10",
+        "expected_cvr": "0.05",
+        "fee_base_per_order": null,
+        "terms": [
+          "ceramic cup",
+          "陶瓷杯"
+        ]
+      }
+    ],
+    "assets": {
+      "rights_confirmed": true,
+      "live_ready": true,
+      "creative_supply_ready": true,
+      "lead_followup_ready": true,
+      "consent_process_ready": true
+    },
+    "china_context": {
+      "storefront": "jd",
+      "stage": "new",
+      "discount_refund_costs_confirmed": true,
+      "lead_economics": null
+    }
+  },
+  "result": {
+    "platform_workflow": [
+      "確認京准通介面與商品資格",
+      "核對庫存、商品頁、到手價",
+      "核算訂單貢獻",
+      "建立試投與觀察清單"
+    ],
+    "products": [
+      {
+        "sku": "demo-cup",
+        "title": "Synthetic ceramic cup / 合成示範商品",
+        "readiness": "PILOT_CANDIDATE",
+        "blocked_by": [],
+        "missing": [],
+        "economics": {
+          "status": "SCENARIO_ONLY",
+          "non_ad_contribution_per_order": "45.000000",
+          "break_even_cpa": "45.000000",
+          "break_even_roas_on_net_revenue": "2.222222",
+          "target_ad_allowance_per_order": "35.000000",
+          "target_roas_on_net_revenue": "2.857143",
+          "economic_cpc_ceiling": "1.750000"
+        },
+        "supplied_listing_terms": [
+          "ceramic cup",
+          "陶瓷杯"
+        ],
+        "research_status": "NO_SEARCH_VOLUME_OR_LIVE_KEYWORD_DATA"
+      },
+      {
+        "sku": "demo-hold",
+        "title": "Synthetic ceramic cup / 合成示範商品",
+        "readiness": "BLOCKED",
+        "blocked_by": [
+          "out_of_stock"
+        ],
+        "missing": [],
+        "economics": {
+          "status": "SCENARIO_ONLY",
+          "non_ad_contribution_per_order": "45.000000",
+          "break_even_cpa": "45.000000",
+          "break_even_roas_on_net_revenue": "2.222222",
+          "target_ad_allowance_per_order": "35.000000",
+          "target_roas_on_net_revenue": "2.857143",
+          "economic_cpc_ceiling": "1.750000"
+        },
+        "supplied_listing_terms": [
+          "ceramic cup",
+          "陶瓷杯"
+        ],
+        "research_status": "NO_SEARCH_VOLUME_OR_LIVE_KEYWORD_DATA"
+      }
+    ],
+    "budget": {
+      "scope": "equal_split_pilot_accounting_not_live_settings",
+      "total_cap": "1400.000000",
+      "allocated_total": "1400.000000",
+      "reserve": "0.000000",
+      "allocation": [
+        {
+          "sku": "demo-cup",
+          "pilot_allowance": "1400.000000"
+        }
+      ],
+      "days": 14,
+      "daily_reference_not_live_budget": "100.000000"
+    },
+    "requested_target_return": null,
+    "target_return_validated_for_platform": false,
+    "checklist": [
+      "確認商家端實際功能、站點及商品資格",
+      "核對收入、優惠、退款與佣金是否重複扣除",
+      "只使用授權素材與可證實主張",
+      "核對歸因期間、行層級與是否含自然成交"
+    ],
+    "notes": [
+      "京准通僅作生態定位。product/store/new_product 是本工具的規劃分類，不表示帳號有全站、全店或新品扶持權限。",
+      "All allocations are equal-split pilot accounting scenarios, not optimized bids or live budgets.",
+      "Use net revenue and fully loaded non-ad costs from the same representative order. No platform fees are assumed.",
+      "Reported gross GMV / spend is not directly comparable with a net-revenue break-even threshold.",
+      "Capability confirmations are user assertions, not independently verified account eligibility.",
+      "Review stock, attribution maturity, rights, site rules and changes before taking any manual action.",
+      "China modes are local workflow categories, not current backend/API settings or eligibility assertions.",
+      "Coupon discounts and refunds already removed from order_revenue must not be deducted again in costs.",
+      "Include creator commissions, returned-goods losses, fulfilment and service costs once in non-ad costs.",
+      "Full-site or managed totals may include organic/halo sales. Use supplied export definitions, not a mode name.",
+      "Reported ROI may mean revenue/spend, not profit ROI. No profitability or incrementality is certified."
+    ],
+    "source_refs": [
+      "JDADS-1",
+      "JDADS-2"
+    ],
+    "planning_mode_is_api_enum": false,
+    "storefront": "jd",
+    "stage_user_declared": "new",
+    "content_tasks": [
+      "依使用者提供的商品字整理需求、用途與疑問",
+      "列出商品頁證據缺口"
+    ]
+  }
+}

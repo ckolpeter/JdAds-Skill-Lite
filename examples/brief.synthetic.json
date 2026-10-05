@@ -1,0 +1,78 @@
+{
+  "platform": "jd",
+  "market": "CN",
+  "currency": "CNY",
+  "source": {
+    "kind": "synthetic",
+    "note": "All products, money, permissions and results are fictional test data."
+  },
+  "money_decimals": 2,
+  "campaign": {
+    "mode": "product",
+    "days": 14,
+    "budget": "1400",
+    "account_ready": true,
+    "feature_confirmed": true,
+    "target_return": null,
+    "ad_rate": null
+  },
+  "products": [
+    {
+      "sku": "demo-cup",
+      "title": "Synthetic ceramic cup / 合成示範商品",
+      "stock": 30,
+      "listing_ready": true,
+      "advertising_eligible": true,
+      "buy_box": null,
+      "order_revenue": "100",
+      "order_costs": {
+        "cogs": "35",
+        "platform_fees": "8",
+        "fulfilment": "10",
+        "other": "2"
+      },
+      "target_profit": "10",
+      "expected_cvr": "0.05",
+      "fee_base_per_order": null,
+      "terms": [
+        "ceramic cup",
+        "陶瓷杯"
+      ]
+    },
+    {
+      "sku": "demo-hold",
+      "title": "Synthetic ceramic cup / 合成示範商品",
+      "stock": 0,
+      "listing_ready": true,
+      "advertising_eligible": true,
+      "buy_box": null,
+      "order_revenue": "100",
+      "order_costs": {
+        "cogs": "35",
+        "platform_fees": "8",
+        "fulfilment": "10",
+        "other": "2"
+      },
+      "target_profit": "10",
+      "expected_cvr": "0.05",
+      "fee_base_per_order": null,
+      "terms": [
+        "ceramic cup",
+        "陶瓷杯"
+      ]
+    }
+  ],
+  "assets": {
+    "rights_confirmed": true,
+    "live_ready": true,
+    "creative_supply_ready": true,
+    "lead_followup_ready": true,
+    "consent_process_ready": true
+  },
+  "china_context": {
+    "storefront": "jd",
+    "stage": "new",
+    "discount_refund_costs_confirmed": true,
+    "lead_economics": null
+  }
+}

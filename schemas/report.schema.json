@@ -1,0 +1,267 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "JdAds Skill Lite report v1.0",
+  "type": "object",
+  "properties": {
+    "platform": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 30,
+      "enum": [
+        "jd"
+      ]
+    },
+    "market": {
+      "type": "string",
+      "pattern": "[A-Z]{2}",
+      "minLength": 2,
+      "maxLength": 2,
+      "enum": [
+        "CN"
+      ]
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "[A-Z]{3}",
+      "minLength": 3,
+      "maxLength": 3,
+      "enum": [
+        "CNY"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "synthetic",
+            "user_provided"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        }
+      },
+      "required": [
+        "kind",
+        "note"
+      ],
+      "additionalProperties": false
+    },
+    "campaign_mode": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 60,
+      "enum": [
+        "product",
+        "store",
+        "new_product"
+      ]
+    },
+    "start_date": {
+      "type": "string",
+      "pattern": "[0-9]{4}-[0-9]{2}-[0-9]{2}",
+      "maxLength": 10
+    },
+    "end_date": {
+      "type": "string",
+      "pattern": "[0-9]{4}-[0-9]{2}-[0-9]{2}",
+      "maxLength": 10
+    },
+    "attribution_window": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "window_complete": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "rows_disjoint": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "sales_scope": {
+      "type": "string",
+      "enum": [
+        "paid_click",
+        "paid_mixed",
+        "paid_and_organic",
+        "unknown"
+      ]
+    },
+    "revenue_basis": {
+      "type": "string",
+      "enum": [
+        "gross_reported",
+        "net_settled",
+        "unknown"
+      ]
+    },
+    "rows": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 500,
+      "items": {
+        "type": "object",
+        "properties": {
+          "sku": {
+            "type": "string",
+            "pattern": "[A-Za-z0-9][A-Za-z0-9._-]{0,63}",
+            "maxLength": 64
+          },
+          "impressions": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000
+          },
+          "clicks": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000
+          },
+          "orders": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000
+          },
+          "spend": {
+            "type": [
+              "string",
+              "number",
+              "null"
+            ],
+            "maxLength": 48,
+            "minimum": 0,
+            "maximum": 1000000000000.0
+          },
+          "revenue": {
+            "type": [
+              "string",
+              "number",
+              "null"
+            ],
+            "maxLength": 48,
+            "minimum": 0,
+            "maximum": 1000000000000.0
+          },
+          "leads": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000
+          },
+          "qualified_leads": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000
+          },
+          "interactions": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000
+          }
+        },
+        "required": [
+          "sku",
+          "impressions",
+          "clicks",
+          "orders",
+          "spend",
+          "revenue"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "goal": {
+      "type": "string",
+      "enum": [
+        "sales"
+      ]
+    },
+    "measurement": {
+      "type": "object",
+      "properties": {
+        "billing_model": {
+          "type": "string",
+          "enum": [
+            "cpc",
+            "cpm",
+            "ocpm",
+            "cpa",
+            "other",
+            "unknown"
+          ]
+        },
+        "attribution_evidence": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "settlement_confirmed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "row_unit": {
+          "type": "string",
+          "enum": [
+            "product",
+            "campaign",
+            "live_session",
+            "note"
+          ]
+        }
+      },
+      "required": [
+        "billing_model",
+        "attribution_evidence",
+        "settlement_confirmed",
+        "row_unit"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "platform",
+    "market",
+    "currency",
+    "source",
+    "campaign_mode",
+    "start_date",
+    "end_date",
+    "attribution_window",
+    "window_complete",
+    "rows_disjoint",
+    "sales_scope",
+    "revenue_basis",
+    "rows",
+    "goal",
+    "measurement"
+  ],
+  "additionalProperties": false
+}

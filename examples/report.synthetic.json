@@ -1,0 +1,42 @@
+{
+  "platform": "jd",
+  "market": "CN",
+  "currency": "CNY",
+  "source": {
+    "kind": "synthetic",
+    "note": "Fictional de-identified example; not live campaign results."
+  },
+  "campaign_mode": "product",
+  "start_date": "2026-09-01",
+  "end_date": "2026-09-14",
+  "attribution_window": "Synthetic settled snapshot for the same reporting period; replace with actual export definition.",
+  "window_complete": true,
+  "rows_disjoint": true,
+  "sales_scope": "paid_click",
+  "revenue_basis": "gross_reported",
+  "rows": [
+    {
+      "sku": "demo-cup",
+      "impressions": 1000,
+      "clicks": 50,
+      "orders": 5,
+      "spend": "100",
+      "revenue": "500"
+    },
+    {
+      "sku": "demo-hold",
+      "impressions": 500,
+      "clicks": 10,
+      "orders": 0,
+      "spend": "20",
+      "revenue": "0"
+    }
+  ],
+  "goal": "sales",
+  "measurement": {
+    "billing_model": "cpc",
+    "attribution_evidence": "SYNTHETIC paid-click cohort; no live platform assertion",
+    "settlement_confirmed": false,
+    "row_unit": "product"
+  }
+}

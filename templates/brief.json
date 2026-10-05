@@ -1,0 +1,53 @@
+{
+  "platform": "jd",
+  "market": "CN",
+  "currency": "CNY",
+  "source": {
+    "kind": "user_provided",
+    "note": "Replace with a de-identified source description; no account data."
+  },
+  "money_decimals": 2,
+  "campaign": {
+    "mode": "product",
+    "days": 14,
+    "budget": null,
+    "account_ready": null,
+    "feature_confirmed": null,
+    "target_return": null,
+    "ad_rate": null
+  },
+  "products": [
+    {
+      "sku": "demo-cup",
+      "title": "Replace with your product title",
+      "stock": null,
+      "listing_ready": null,
+      "advertising_eligible": null,
+      "buy_box": null,
+      "order_revenue": null,
+      "order_costs": {
+        "cogs": null,
+        "platform_fees": null,
+        "fulfilment": null,
+        "other": null
+      },
+      "target_profit": null,
+      "expected_cvr": null,
+      "fee_base_per_order": null,
+      "terms": []
+    }
+  ],
+  "assets": {
+    "rights_confirmed": null,
+    "live_ready": null,
+    "creative_supply_ready": null,
+    "lead_followup_ready": null,
+    "consent_process_ready": null
+  },
+  "china_context": {
+    "storefront": "jd",
+    "stage": "unknown",
+    "discount_refund_costs_confirmed": null,
+    "lead_economics": null
+  }
+}

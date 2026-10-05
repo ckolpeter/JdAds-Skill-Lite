@@ -1,0 +1,6 @@
+interface:
+  display_name: "JdAds Skill Lite"
+  short_description: "京東商品／全店／新品規劃、訂單貢獻及報表檢查"
+  default_prompt: "Use $jdads-skill-lite to prepare a mainland-China offline plan from supplied data, preserving unknowns and requiring human review."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,99 @@
+{
+  "slug": "jdads",
+  "name": "JdAds Skill Lite",
+  "platform": "jd",
+  "market": "CN",
+  "currency": "CNY",
+  "focus": "京東商品／全店／新品規劃、訂單貢獻及報表檢查",
+  "modes": [
+    "product",
+    "store",
+    "new_product"
+  ],
+  "workflows": {
+    "product": [
+      "確認京准通介面與商品資格",
+      "核對庫存、商品頁、到手價",
+      "核算訂單貢獻",
+      "建立試投與觀察清單"
+    ],
+    "store": [
+      "按相同收入／成本口徑分組商品",
+      "排除缺貨及成本不完整商品",
+      "試算全店預算；不是平台設定",
+      "避免全店與商品歸因重複相加"
+    ],
+    "new_product": [
+      "由商家明確標記新品階段",
+      "核對新品資格與素材；不承諾扶持流量",
+      "保留冷啟動數據不足狀態",
+      "以成熟歸因資料復盤"
+    ]
+  },
+  "creative_tasks": {
+    "product": [
+      "依使用者提供的商品字整理需求、用途與疑問",
+      "列出商品頁證據缺口"
+    ],
+    "store": [
+      "比較各商品的實際貢獻與供貨能力",
+      "整理共用賣點但不混合不同成本"
+    ],
+    "new_product": [
+      "提出新品介紹／使用步驟兩種素材假設",
+      "不把新品標籤當成投放資格"
+    ]
+  },
+  "budget_scope": {
+    "product": "equal_split_pilot_accounting_not_live_settings",
+    "store": "equal_split_pilot_accounting_not_live_settings",
+    "new_product": "equal_split_pilot_accounting_not_live_settings"
+  },
+  "storefronts": [
+    "jd"
+  ],
+  "report_goals": [
+    "sales"
+  ],
+  "notes": [
+    "京准通僅作生態定位。product/store/new_product 是本工具的規劃分類，不表示帳號有全站、全店或新品扶持權限。"
+  ],
+  "checklist": [
+    "確認商家端實際功能、站點及商品資格",
+    "核對收入、優惠、退款與佣金是否重複扣除",
+    "只使用授權素材與可證實主張",
+    "核對歸因期間、行層級與是否含自然成交"
+  ],
+  "sources": [
+    {
+      "id": "JDADS-1",
+      "title": "京准通營銷 API 介紹",
+      "url": "https://opendoc.jd.com/ads_api/jzt/",
+      "checked_on": "2026-10-05",
+      "scope": "CN",
+      "verification": "scope_verified",
+      "summary": "Official overview describes reporting and ad management; it does not verify current account-specific products."
+    },
+    {
+      "id": "JDADS-2",
+      "title": "京准通入口",
+      "url": "https://jzt.jd.com/",
+      "checked_on": "2026-10-05",
+      "scope": "CN",
+      "verification": "portal_only",
+      "summary": "Public portal loaded with network errors; specific live products and controls remain unverified."
+    }
+  ],
+  "skill_id": "jdads-skill-lite",
+  "repo": "ckolpeter/JdAds-Skill-Lite",
+  "version": "1.0.0",
+  "source_policy": "Public-source scope snapshot 2026-10-05. Local modes are NOT platform enums. No live capability claim.",
+  "focus_i18n": [
+    "京東商品／全店／新品規劃、訂單貢獻及報表檢查",
+    "京东商品／全店／新品规划、订单贡献及报表检查",
+    "JD product, store and new-product planning with order economics and report checks",
+    "京東の商品・店舗・新商品企画、注文採算とレポート確認",
+    "JD 상품·스토어·신상품 기획, 주문 수익성 및 보고서 검토"
+  ],
+  "english": "JD product, store and new-product planning with order economics and report checks"
+}

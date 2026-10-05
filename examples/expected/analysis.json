@@ -1,0 +1,170 @@
+{
+  "contract_name": "jdads.analysis",
+  "contract_version": "1.0",
+  "producer_version": "1.0.0",
+  "kind": "analysis",
+  "local_id": "local-d5042e45ce7ddff5",
+  "status": "ANALYSIS_READY",
+  "review": "HUMAN_REVIEW_REQUIRED",
+  "publish_authorized": false,
+  "external_reads": false,
+  "external_writes": false,
+  "generation_mode": "deterministic",
+  "input": {
+    "platform": "jd",
+    "market": "CN",
+    "currency": "CNY",
+    "source": {
+      "kind": "synthetic",
+      "note": "Fictional de-identified example; not live campaign results."
+    },
+    "campaign_mode": "product",
+    "start_date": "2026-09-01",
+    "end_date": "2026-09-14",
+    "attribution_window": "Synthetic settled snapshot for the same reporting period; replace with actual export definition.",
+    "window_complete": true,
+    "rows_disjoint": true,
+    "sales_scope": "paid_click",
+    "revenue_basis": "gross_reported",
+    "rows": [
+      {
+        "sku": "demo-cup",
+        "impressions": 1000,
+        "clicks": 50,
+        "orders": 5,
+        "spend": "100",
+        "revenue": "500"
+      },
+      {
+        "sku": "demo-hold",
+        "impressions": 500,
+        "clicks": 10,
+        "orders": 0,
+        "spend": "20",
+        "revenue": "0"
+      }
+    ],
+    "goal": "sales",
+    "measurement": {
+      "billing_model": "cpc",
+      "attribution_evidence": "SYNTHETIC paid-click cohort; no live platform assertion",
+      "settlement_confirmed": false,
+      "row_unit": "product"
+    }
+  },
+  "result": {
+    "rows": [
+      {
+        "sku": "demo-cup",
+        "diagnosis": "OBSERVATION_ONLY",
+        "metrics": {
+          "billing_model": "cpc",
+          "ctr_fraction": "0.050000",
+          "cpc": "2.000000",
+          "effective_spend_per_click": "2.000000",
+          "cpm": "100.000000",
+          "click_order_rate": "0.100000",
+          "cost_per_reported_order": "20.000000",
+          "reported_roas": "5.000000",
+          "reported_blended_return": null,
+          "unclassified_return": null,
+          "ad_cost_ratio_fraction": "0.200000",
+          "profit_or_incrementality_verified": false,
+          "cost_per_lead": null,
+          "cost_per_qualified_lead": null,
+          "lead_qualification_rate": null,
+          "cost_per_interaction_event": null,
+          "interaction_events_per_impression": null
+        },
+        "warnings": [],
+        "leads": null,
+        "qualified_leads": null,
+        "interactions": null
+      },
+      {
+        "sku": "demo-hold",
+        "diagnosis": "REVIEW_ZERO_ORDERS_NOT_AUTOMATIC_PAUSE",
+        "metrics": {
+          "billing_model": "cpc",
+          "ctr_fraction": "0.020000",
+          "cpc": "2.000000",
+          "effective_spend_per_click": "2.000000",
+          "cpm": "40.000000",
+          "click_order_rate": "0.000000",
+          "cost_per_reported_order": null,
+          "reported_roas": "0.000000",
+          "reported_blended_return": null,
+          "unclassified_return": null,
+          "ad_cost_ratio_fraction": null,
+          "profit_or_incrementality_verified": false,
+          "cost_per_lead": null,
+          "cost_per_qualified_lead": null,
+          "lead_qualification_rate": null,
+          "cost_per_interaction_event": null,
+          "interaction_events_per_impression": null
+        },
+        "warnings": [],
+        "leads": null,
+        "qualified_leads": null,
+        "interactions": null
+      }
+    ],
+    "totals": {
+      "input_totals": {
+        "sku": "local-total",
+        "impressions": 1500,
+        "clicks": 60,
+        "orders": 5,
+        "spend": "120.000000",
+        "revenue": "500.000000",
+        "leads": null,
+        "qualified_leads": null,
+        "interactions": null
+      },
+      "metrics": {
+        "billing_model": "cpc",
+        "ctr_fraction": "0.040000",
+        "cpc": "2.000000",
+        "effective_spend_per_click": "2.000000",
+        "cpm": "80.000000",
+        "click_order_rate": "0.083333",
+        "cost_per_reported_order": "24.000000",
+        "reported_roas": "4.166667",
+        "reported_blended_return": null,
+        "unclassified_return": null,
+        "ad_cost_ratio_fraction": "0.240000",
+        "profit_or_incrementality_verified": false,
+        "cost_per_lead": null,
+        "cost_per_qualified_lead": null,
+        "lead_qualification_rate": null,
+        "cost_per_interaction_event": null,
+        "interaction_events_per_impression": null
+      }
+    },
+    "notes": [
+      "Metrics are descriptive, not causal. No automatic scale, pause or bid changes.",
+      "Do not sum overlapping attribution windows, product totals, campaign totals or halo sales.",
+      "Zero denominators and missing measurements remain null; they are not zero performance.",
+      "Revenue basis, refunds, currency and attribution must match before any profitability comparison.",
+      "Billing model is a user-supplied classification. Spend/click does not prove CPC billing.",
+      "Rows require the same period, goal, currency, attribution definition and aggregation level.",
+      "Interactions are event counts, not unique people or conversions. Multiple events per impression are possible.",
+      "Leads, qualified leads and orders are distinct; no customer identity is requested.",
+      "Gross GMV/spend is never certified as net profit ROI; no automatic scale/pause decision is produced.",
+      "SETTLEMENT_UNCONFIRMED: reconcile refunds/commissions/settlement before margin comparisons."
+    ],
+    "revenue_basis": "gross_reported",
+    "attribution_window": "Synthetic settled snapshot for the same reporting period; replace with actual export definition.",
+    "source_refs": [
+      "JDADS-1",
+      "JDADS-2"
+    ],
+    "goal": "sales",
+    "measurement": {
+      "billing_model": "cpc",
+      "attribution_evidence": "SYNTHETIC paid-click cohort; no live platform assertion",
+      "settlement_confirmed": false,
+      "row_unit": "product"
+    }
+  }
+}

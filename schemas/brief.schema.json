@@ -1,0 +1,437 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "JdAds Skill Lite brief v1.0",
+  "type": "object",
+  "properties": {
+    "platform": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 30,
+      "enum": [
+        "jd"
+      ]
+    },
+    "market": {
+      "type": "string",
+      "pattern": "[A-Z]{2}",
+      "minLength": 2,
+      "maxLength": 2,
+      "enum": [
+        "CN"
+      ]
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "[A-Z]{3}",
+      "minLength": 3,
+      "maxLength": 3,
+      "enum": [
+        "CNY"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "synthetic",
+            "user_provided"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        }
+      },
+      "required": [
+        "kind",
+        "note"
+      ],
+      "additionalProperties": false
+    },
+    "money_decimals": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "campaign": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60,
+          "enum": [
+            "product",
+            "store",
+            "new_product"
+          ]
+        },
+        "days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 366
+        },
+        "budget": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ],
+          "maxLength": 48,
+          "minimum": 0,
+          "maximum": 1000000000000.0
+        },
+        "account_ready": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "feature_confirmed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "target_return": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ],
+          "maxLength": 48,
+          "minimum": 0,
+          "maximum": 1000000000000.0
+        },
+        "ad_rate": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ],
+          "maxLength": 48,
+          "minimum": 0,
+          "maximum": 1000000000000.0
+        }
+      },
+      "required": [
+        "mode",
+        "days",
+        "budget",
+        "account_ready",
+        "feature_confirmed",
+        "target_return",
+        "ad_rate"
+      ],
+      "additionalProperties": false
+    },
+    "products": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 500,
+      "items": {
+        "type": "object",
+        "properties": {
+          "sku": {
+            "type": "string",
+            "pattern": "[A-Za-z0-9][A-Za-z0-9._-]{0,63}",
+            "maxLength": 64
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "stock": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000
+          },
+          "listing_ready": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "advertising_eligible": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "buy_box": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "order_revenue": {
+            "type": [
+              "string",
+              "number",
+              "null"
+            ],
+            "maxLength": 48,
+            "minimum": 0,
+            "maximum": 1000000000000.0
+          },
+          "order_costs": {
+            "type": "object",
+            "properties": {
+              "cogs": {
+                "type": [
+                  "string",
+                  "number",
+                  "null"
+                ],
+                "maxLength": 48,
+                "minimum": 0,
+                "maximum": 1000000000000.0
+              },
+              "platform_fees": {
+                "type": [
+                  "string",
+                  "number",
+                  "null"
+                ],
+                "maxLength": 48,
+                "minimum": 0,
+                "maximum": 1000000000000.0
+              },
+              "fulfilment": {
+                "type": [
+                  "string",
+                  "number",
+                  "null"
+                ],
+                "maxLength": 48,
+                "minimum": 0,
+                "maximum": 1000000000000.0
+              },
+              "other": {
+                "type": [
+                  "string",
+                  "number",
+                  "null"
+                ],
+                "maxLength": 48,
+                "minimum": 0,
+                "maximum": 1000000000000.0
+              }
+            },
+            "required": [
+              "cogs",
+              "platform_fees",
+              "fulfilment",
+              "other"
+            ],
+            "additionalProperties": false
+          },
+          "target_profit": {
+            "type": [
+              "string",
+              "number",
+              "null"
+            ],
+            "maxLength": 48,
+            "minimum": 0,
+            "maximum": 1000000000000.0
+          },
+          "expected_cvr": {
+            "type": [
+              "string",
+              "number",
+              "null"
+            ],
+            "maxLength": 48,
+            "minimum": 0,
+            "maximum": 1000000000000.0
+          },
+          "fee_base_per_order": {
+            "type": [
+              "string",
+              "number",
+              "null"
+            ],
+            "maxLength": 48,
+            "minimum": 0,
+            "maximum": 1000000000000.0
+          },
+          "terms": {
+            "type": "array",
+            "maxItems": 30,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          }
+        },
+        "required": [
+          "sku",
+          "title",
+          "stock",
+          "listing_ready",
+          "advertising_eligible",
+          "buy_box",
+          "order_revenue",
+          "order_costs",
+          "target_profit",
+          "expected_cvr",
+          "fee_base_per_order",
+          "terms"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "assets": {
+      "type": "object",
+      "properties": {
+        "rights_confirmed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "live_ready": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "creative_supply_ready": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "lead_followup_ready": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "consent_process_ready": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "rights_confirmed",
+        "live_ready",
+        "creative_supply_ready",
+        "lead_followup_ready",
+        "consent_process_ready"
+      ],
+      "additionalProperties": false
+    },
+    "china_context": {
+      "type": "object",
+      "properties": {
+        "storefront": {
+          "type": "string",
+          "enum": [
+            "jd"
+          ]
+        },
+        "stage": {
+          "type": "string",
+          "enum": [
+            "new",
+            "growth",
+            "mature",
+            "unknown"
+          ]
+        },
+        "discount_refund_costs_confirmed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "lead_economics": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "contribution_per_sale": {
+              "type": [
+                "string",
+                "number",
+                "null"
+              ],
+              "maxLength": 48,
+              "minimum": 0,
+              "maximum": 1000000000000.0
+            },
+            "close_rate": {
+              "type": [
+                "string",
+                "number",
+                "null"
+              ],
+              "maxLength": 48,
+              "minimum": 0,
+              "maximum": 1000000000000.0
+            },
+            "handling_cost_per_lead": {
+              "type": [
+                "string",
+                "number",
+                "null"
+              ],
+              "maxLength": 48,
+              "minimum": 0,
+              "maximum": 1000000000000.0
+            },
+            "target_profit_per_lead": {
+              "type": [
+                "string",
+                "number",
+                "null"
+              ],
+              "maxLength": 48,
+              "minimum": 0,
+              "maximum": 1000000000000.0
+            }
+          },
+          "required": [
+            "contribution_per_sale",
+            "close_rate",
+            "handling_cost_per_lead",
+            "target_profit_per_lead"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "storefront",
+        "stage",
+        "discount_refund_costs_confirmed",
+        "lead_economics"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "platform",
+    "market",
+    "currency",
+    "source",
+    "money_decimals",
+    "campaign",
+    "products",
+    "assets",
+    "china_context"
+  ],
+  "additionalProperties": false
+}
