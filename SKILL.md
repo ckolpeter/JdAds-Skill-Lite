@@ -15,6 +15,54 @@ metadata:
 
 京東商品／全店／新品規劃、訂單貢獻及報表檢查。沿用使用者語言；本地 JSON 名稱不翻譯。
 
+## Reference map
+
+只在當前步驟需要時開啟 reference；所有執行時 reference 都直接由本檔連結，不依賴第二層 reference。
+
+- 資料契約、財務情境、事件／報表口徑與重播驗證：[references/data-contract.md](references/data-contract.md)
+- 平台官方入口快照與查核狀態：[references/official-sources.md](references/official-sources.md)
+
+平台本地 mode、商家端、creative tasks 與來源狀態定義在 `profile.json`。若 reference 超過 100 行，頂部必須有 `## Contents`（或等效目錄標題）；release gate 會阻擋不符合者。
+
+## Degrees of freedom
+
+**High freedom — 允許模型判斷**
+- 依使用者提供的商品、搜尋詞、素材或人群證據形成策略與測試假設。
+- 解釋報表訊號、風險與下一個人工測試。
+- 不得發明平台後台控制項、搜尋量、費率、帳號資格、法律結論或保證成效。
+
+**Medium freedom — 固定形狀、內容可變**
+- 依 `templates/brief.json` 與本地 mode 整理 plan。
+- 將 facts、assumptions、unknowns、risks、recommendations 分開。
+- 自然語言解讀可依使用者語言調整，但不得改 deterministic JSON。
+
+**Low freedom — 必須由 script 決定**
+- 訂單貢獻、break-even CPA/ROAS、target allowance、pilot accounting。
+- canonical report、事件口徑、replay validation、no-overwrite 與 release gate。
+- 不得用模型心算取代 deterministic 結果，也不得弱化 validator 來「通過」。
+
+## Ordered execution checklist
+
+- [ ] 確認目標平台與 CN/CNY；其他平台 route away。
+- [ ] 收集阻塞性缺漏資料；成本、歸因、權利、資質未知就保留 unknown/null。
+- [ ] 只開啟 Reference map 中必要的 reference，保留來源查核狀態。
+- [ ] 映射到模板或 canonical supplied report。
+- [ ] 執行 plan/analyze，再執行 validate。
+- [ ] 驗證失敗時修正失敗資料／結構並重驗，不跳過、不弱化 validator。
+- [ ] deterministic PASS 後再撰寫獨立人工解讀；無法修復就回報 blocker。
+
+## Self-correction loop
+
+Artifact 流程固定為 **draft → validate → repair → revalidate**。只有 validator PASS 才能視為 `PLAN_READY`／`ANALYSIS_READY`，而且仍然是 HUMAN_REVIEW_REQUIRED。
+
+策略 prose 交付前重新核對 supplied facts、歸因口徑、相關 reference 與平台能力邊界。任何未驗證的產品、控制項、因果或保證性成效主張都必須刪除或改成待確認。
+
+## Dependencies
+
+必要條件：Python 3.10+ 標準函式庫。無需 pip、npm、Docker、API key、廣告帳號登入、網路、connector 或其他 Repo。
+
+如果環境缺少 Python 3.10+，停止並回報 prerequisite，不自行安裝。宿主模型只負責可選的自然語言解讀，不是 deterministic package dependency。
+
 ## 執行流程
 
 1. 確認目標平台與 CN/CNY。先讀 references/data-contract.md、profile.json、官方來源狀態。
@@ -41,4 +89,4 @@ python3 -m unittest discover -s tests -v
 python3 scripts/release_gate.py
 ```
 
-後续擴充讀 AGENTS.md、CLAUDE.md、docs/HANDOFF.md。不要編輯其他專案，不加 Runmo／Pro／API 依賴。
+後续擴充讀 AGENTS.md、CLAUDE.md、docs/HANDOFF.md。結構稽核見 docs/BEST_PRACTICES_AUDIT.md；跨模型矩陣見 evals/MODEL_EVAL_MATRIX.md。不要編輯其他專案，不加 Runmo／Pro／API 依賴。

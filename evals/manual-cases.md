@@ -10,3 +10,8 @@
 8. Douyin/Kuaishou: no TikTok Shop rule import; reconcile live totals and product rows.
 9. Test each of five user languages; do not label it passed without observed outputs.
 Record tool, model, date, input, actual outcome, expected outcome and PASS/FAIL/NOT_RUN per case.
+
+10. Reference-loading probe: 平台／來源問題直接開 official-sources；損益／報表問題直接開 data-contract，不依賴第二層 reference。
+11. Validation-failure probe: 修正 failing input/artifact 並重跑 validation；不得放寬 validator 或把 failed artifact 標為 ready。
+
+跨模型 lanes 與記錄格式見 [MODEL_EVAL_MATRIX.md](MODEL_EVAL_MATRIX.md)。

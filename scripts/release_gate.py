@@ -34,9 +34,43 @@ def manifest_text(root=ROOT):
                    for p in release_files(root))
 
 
+CONTENTS_RE = re.compile(r'^##\\s+(contents|table of contents|目錄|目录)\\s*$', re.I | re.M)
+REQUIRED_SKILL_SECTIONS = (
+    '## Reference map',
+    '## Degrees of freedom',
+    '## Ordered execution checklist',
+    '## Self-correction loop',
+    '## Dependencies',
+)
+
+
+def best_practices(root, skill):
+    if len(skill.splitlines()) > 500:
+        raise ValueError('SKILL.md exceeds 500 lines')
+    for heading in REQUIRED_SKILL_SECTIONS:
+        if heading not in skill:
+            raise ValueError('Missing best-practice section: ' + heading)
+    ref_root = root/'references'
+    refs = sorted(ref_root.rglob('*.md'))
+    for path in refs:
+        if path.parent != ref_root:
+            raise ValueError('Nested reference path forbidden: ' + str(path.relative_to(root)))
+        rel = path.relative_to(root).as_posix()
+        if rel not in skill:
+            raise ValueError('Reference not linked directly from SKILL.md: ' + rel)
+        lines = path.read_text(encoding='utf-8').splitlines()
+        if len(lines) > 100 and not CONTENTS_RE.search('\n'.join(lines[:40])):
+            raise ValueError('Reference over 100 lines lacks top content list: ' + rel)
+    if not (root/'docs/BEST_PRACTICES_AUDIT.md').is_file():
+        raise ValueError('Missing best-practices audit')
+    if not (root/'evals/MODEL_EVAL_MATRIX.md').is_file():
+        raise ValueError('Missing model-eval matrix')
+
+
 def structure(root=ROOT):
     cfg = json.loads((root/'profile.json').read_text(encoding='utf-8'))
     skill = (root/'SKILL.md').read_text(encoding='utf-8')
+    best_practices(root, skill)
     front = skill.split('---', 2)[1]
     name = re.search(r'^name: (.+)$', front, re.M)
     if not name or name.group(1) != cfg['skill_id'] or cfg['version'] != '1.0.0':
