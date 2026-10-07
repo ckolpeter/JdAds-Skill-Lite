@@ -1,4 +1,4 @@
-# JdAds Skill Lite v1.0.0 — Public Preview
+# JdAds Skill Lite v1.1.0 — Public Preview
 
 [繁體中文](docs/i18n/README.zh-TW.md) · [简体中文](docs/i18n/README.zh-CN.md) · [English](docs/i18n/README.en.md) · [日本語](docs/i18n/README.ja.md) · [한국어](docs/i18n/README.ko.md)
 

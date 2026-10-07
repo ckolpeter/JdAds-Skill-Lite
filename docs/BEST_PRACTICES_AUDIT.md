@@ -11,6 +11,6 @@ Scope: `jdads-skill-lite` only. This is a repository/behavior-design audit, not 
 | Ordered checklist | PASS | SKILL.md contains the order-sensitive checklist and return-on-failure rule. |
 | Self-correction loop | PASS | Draft → validate → repair → revalidate; validator weakening is forbidden. |
 | Dependencies explicit | PASS | Python 3.10+ standard library only; no third-party runtime dependency. |
-| Cross-model evaluation | NOT_RUN | Required lanes are defined in `evals/MODEL_EVAL_MATRIX.md`; real host/model runs remain pending. |
+| Cross-model evaluation | PASS (scoped AUTOMATED_SMOKE) | Historical reconciled smoke evidence: Haiku PASS_WITH_WARNINGS, Sonnet PASS_WITH_WARNINGS, Opus PASS; warnings: REPORT_PARSE_FAILED; RECOVERED_REQUIRED_COMMAND_DENIAL; NON_REQUIRED_COMMAND_ATTEMPTED. No FAIL or INVALID_RUN. |
 
 Structural hardening never upgrades an inaccessible or stale source into verified platform capability. CI PASS does not imply live feature availability, attribution correctness, legal approval, or performance.
